@@ -21,11 +21,11 @@ lista_nombres_archivos = get_nombres()
 def button_event():
     opc = Combo_option.get()
     if opc == 'Agregar texto a analizar':
-        print("hello")
         formulario()
         root.mainloop()
     elif opc == 'Estadísticas generales':
-        print(opc)
+        textbox.insert(index = "0.0", text = estadisticas(Combo_archives.get()), tags=None)
+        print(estadisticas(Combo_archives.get()))
     elif opc == 'Barra de tendencia del discurso':
         print(opc)
     elif opc == 'Gráfica serie-tiempo':
@@ -41,7 +41,7 @@ def button_event():
         print('ERROR')
 
 #Graphic
-graphic = PhotoImage(file = 'C:/Users/Usuario/Documents/uni/4tosem/Ing software/PROYECTOFINAL/kiwi.png')
+graphic = PhotoImage(file = 'C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/kiwi.png')
 graph_img = graphic.zoom(30)
 graph_img = graph_img.subsample(64)
 
