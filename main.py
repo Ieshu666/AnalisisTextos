@@ -33,7 +33,7 @@ def button_event():
     elif opc == 'Gráfica dispersión léxica':
         print(opc)
     elif opc == 'Nube de palabras':
-        print(opc)        
+        hacer_wordcloud(Combo_archives.get())        
     elif opc == 'Actualizar archivos':
         lista_nombres_archivos = get_nombres()
         Combo_archives.configure(values = lista_nombres_archivos)

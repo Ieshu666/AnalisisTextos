@@ -10,7 +10,7 @@ stopwords_ruta = 'C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFIN
 lista_ruta_datos = 'C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/archivo.txt'
 
 #opciones Constantes no mover
-lista_funciones = ['Estadísticas generales', 'Nube de palabras', 'Agregar texto a analizar', 'Barra de tendencia del discurso','Gráfica dispersión léxica', 'Gráfica serie-tiempo', 'Actualizar archivos']
+lista_funciones = [ 'Agregar texto a analizar', 'Estadísticas generales', 'Barra de tendencia del discurso',  'Gráfica serie-tiempo', 'Nube de palabras','Gráfica dispersión léxica', 'Actualizar archivos']
 stopwords = leer_texto(stopwords_ruta).split('\n')
 
 #ListasIm
@@ -36,13 +36,22 @@ def get_nombres():
             cont += 1
     return lista_aux
 
-def hacer_wordcloud(archivos = archivos_seleccionados):
+def buscar_ruta(nombre):
+    i = 0
+    with open(lista_ruta_datos, 'r') as archivo:
+        for linea in archivo:
+            if(i == 1):
+                return linea.strip()
+            if(nombre == linea.strip()):
+                i = 1
+
+def hacer_wordcloud(nombre):
     texto = ''
-    for a in archivos:
-        texto_archivo = leer_texto(a)
-        texto += limpieza_texto(texto_archivo,  n_min=4, lista_palabras=stopwords)
+    print(buscar_ruta(nombre))
+    texto_archivo = leer_texto(buscar_ruta(nombre))
+    texto += limpieza_texto(texto_archivo,  n_min=4, lista_palabras=stopwords)
     nube_palabras(texto, n_grama=1, ubicacion_archivo='salida/nube_uni.jpg', semilla=130, dim_figura=(5,5))
-    
+
 def estadisticas(nombre):
     texto = ''
     i = 0
