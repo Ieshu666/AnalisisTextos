@@ -6,3 +6,19 @@ Milyunanoches
 C:\Users\Usuario\Documents\uni\4tosem\Ing_software\PROYECTOFINAL\entrada\mil_y_una_noches_pt1.txt
 11/05/24
 Ieshua
+Zorro2
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/fabula_zorro_y_cuervo.txt
+12/05/2024
+CarvanPalace
+DonQuijote
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/cervantes_don_quijote.txt
+14/05/2024
+Miguel de Cervantes
+Prueba
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/prueba_in.txt
+12/12/2012
+Yo
+StopWords2
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/stopwords_prueba.txt
+02/02/2002
+QuienSabe

@@ -1,4 +1,4 @@
-from customtkinter import CTk, CTkFrame, CTkButton, CTkEntry, CTkLabel, CTkTextbox
+from customtkinter import CTk, CTkFrame, CTkButton, CTkEntry, CTkLabel, CTkTextbox, filedialog
 from tkinter import PhotoImage
 from analizador import lista_ruta_datos, guardar_archivo_nuevo
 
@@ -20,6 +20,14 @@ def formulario():
             guardar_archivo_nuevo(lista_ruta_datos,archivo_ruta, nombre, fecha, autor)
         else:
             print("Datos inválidos")
+
+    def seleccionar_archivo():
+        # Abre el explorador de archivos y guarda la ruta del archivo seleccionado en la variable 'ruta_archivo'
+        ruta_archivo = filedialog.askopenfilename()
+
+        # Actualiza el texto de la etiqueta con la ruta del archivo seleccionado
+        entry_archive.insert(index = 0, string = ruta_archivo)
+
 
     root_form = CTk()
     root_form.geometry('600x350+610+200')
@@ -44,7 +52,9 @@ def formulario():
     label_autor.grid(columnspan=1, column=1, row=3, pady=14, padx=14, sticky="w")
 
     entry_archive = CTkEntry(buttons_frame, placeholder_text="Ruta del documento", width=300)
+    entry_archive_btn = CTkButton(buttons_frame,width= 70, text="Buscar", corner_radius=8, border_width=2, command = seleccionar_archivo)
     entry_archive.grid(column=2,row=0,columnspan=4,pady=10,padx=10)
+    entry_archive_btn.grid(column=5,row=0,columnspan=4,pady=10,padx=10)
 
     entry_nombre = CTkEntry(buttons_frame, placeholder_text="Nombre del archivo", width=300)
     entry_nombre.grid(column=2,row=1,columnspan=4,pady=10,padx=10)

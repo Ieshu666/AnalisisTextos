@@ -25,7 +25,6 @@ def button_event():
         root.mainloop()
     elif opc == 'Estadísticas generales':
         textbox.insert(index = "0.0", text = estadisticas(Combo_archives.get()), tags=None)
-        print(estadisticas(Combo_archives.get()))
     elif opc == 'Barra de tendencia del discurso':
         print(opc)
     elif opc == 'Gráfica serie-tiempo':
