@@ -4,10 +4,12 @@ from contexto.lectura import *
 from contexto.escritura import *
 from contexto.limpieza import *
 from contexto.exploracion import *
+from hashlib import sha1 # for the temp name's file
+import time # for get the unixtime
 
 # Rutas de los archivos de los cuales se va a extraer texto
-stopwords_ruta = 'C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/stopwords.txt'
-lista_ruta_datos = 'C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/archivo.txt'
+stopwords_ruta = 'stopwords.txt'
+lista_ruta_datos = 'archivo.txt'
 
 #opciones Constantes no mover
 lista_funciones = [ 'Agregar texto a analizar', 'Estadísticas generales', 'Barra de tendencia del discurso',  'Gráfica serie-tiempo', 'Nube de palabras','Gráfica dispersión léxica', 'Actualizar archivos']
@@ -25,6 +27,10 @@ def guardar_archivo_nuevo(lista_ruta_datos = lista_ruta_datos, archivo_ruta = 't
         archivo.writelines(archivo_ruta + "\n")
         archivo.writelines(fecha + "\n")
         archivo.writelines(autor + "\n")
+def generate_temp():
+    temp_name = str(round(time.time() * 1000))
+    temp_path = sha1(temp_name.encode('utf-8')).hexdigest()
+    return 'temp/'+temp_path+'.png'
 
 def get_nombres():
     cont  = 1
@@ -50,7 +56,9 @@ def hacer_wordcloud(nombre):
     print(buscar_ruta(nombre))
     texto_archivo = leer_texto(buscar_ruta(nombre))
     texto += limpieza_texto(texto_archivo,  n_min=4, lista_palabras=stopwords)
-    nube_palabras(texto, n_grama=1, ubicacion_archivo='salida/nube_uni.jpg', semilla=130, dim_figura=(5,5))
+    path_name = generate_temp()
+    nube_palabras(texto, n_grama=1, ubicacion_archivo=path_name, semilla=130, dim_figura=(5,5), graficar=False)
+    return path_name
 
 def estadisticas(nombre):
     texto = ''
@@ -71,5 +79,34 @@ def estadisticas(nombre):
                     i = 2
                 if(nombre == linea.strip()):
                     i = 1
-                
     return texto
+
+def barra_tendencias(nombre):
+    texto = ''
+    path = buscar_ruta(nombre)
+    temp_path = generate_temp()
+    texto_archivo = leer_texto(path)
+    texto += limpieza_texto(texto_archivo,  n_min=4, lista_palabras=stopwords)
+    grafica_barchart_frecuencias(texto, ubicacion_archivo=temp_path,titulo='Frecuencias de palabras', dim_figura=(7,4),graficar=False)
+    return temp_path
+
+def dispersion_lexica(nombre, dirty_tokens):
+    texto = ''
+    path = buscar_ruta(nombre)
+    tokens = dirty_tokens.split('\n')
+    print(dirty_tokens)
+    temp_path = generate_temp()
+    texto_archivo = leer_texto(path)
+    texto += limpieza_texto(texto_archivo, n_min=4, lista_palabras=stopwords)
+    graficar_dispersion(texto, tokens,ubicacion_archivo=temp_path,auto_etiquetas = True, dim_figura=(6,3), graficar=False)
+    return temp_path
+
+
+
+
+
+
+
+
+
+
