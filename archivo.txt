@@ -1,10 +1,10 @@
 ieshu
 C:\Users\Usuario\Documents\uni\4tosem\Ing_software\PROYECTOFINAL\entrada\fabula_zorro_y_cuervo.txt
-22/25/24
+22/25/2024
 yo qn mas
 Milyunanoches
 C:\Users\Usuario\Documents\uni\4tosem\Ing_software\PROYECTOFINAL\entrada\mil_y_una_noches_pt1.txt
-11/05/24
+11/05/2000
 Ieshua
 Zorro2
 C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/fabula_zorro_y_cuervo.txt
@@ -22,3 +22,7 @@ StopWords2
 C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/stopwords_prueba.txt
 02/02/2002
 QuienSabe
+Donquijote3
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/cervantes_don_quijote.txt
+13/05/2024
+Miguel de Cervantes

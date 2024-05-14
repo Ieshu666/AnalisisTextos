@@ -1,5 +1,6 @@
 from customtkinter import CTk, CTkFrame, CTkButton, CTkEntry, CTkLabel, CTkTextbox, filedialog
 from tkinter import PhotoImage
+import re
 from analizador import lista_ruta_datos, guardar_archivo_nuevo
 
 #Variables
@@ -10,9 +11,14 @@ black = '#E2E5DE'
 white = '#FFFFFF'
 def formulario():
 
+    # Función para validar el formato de fecha
+    def validar_fecha(entrada):
+        patron_fecha = r'^\d{2}/\d{2}/\d{4}$'
+        return re.match(patron_fecha, entrada) is not None
+
     #Functions
     def button_event():
-        if(entry_fecha.get() != '' and entry_archive.get() != '' and entry_autor.get() != '' and entry_nombre.get() != ''):
+        if(validar_fecha(entry_fecha.get()) and entry_archive.get() != '' and entry_autor.get() != '' and entry_nombre.get() != ''):
             archivo_ruta = entry_archive.get()
             nombre = entry_nombre.get()
             fecha = entry_fecha.get()
@@ -72,4 +78,3 @@ def formulario():
     root_form.columnconfigure(0,weight=1)
     root_form.rowconfigure(0, weight=1)
     root_form.mainloop()
-    root_form.quit()

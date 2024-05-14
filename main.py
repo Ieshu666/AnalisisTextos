@@ -1,6 +1,7 @@
 from customtkinter import CTk, CTkFrame, CTkButton, CTkEntry, CTkLabel, CTkTextbox, CTkComboBox, CTkImage
 from tkinter import PhotoImage
 from analizador import *
+import matplotlib.pyplot as plt
 from form import  formulario
 from viewer import viewer_img
 
@@ -15,7 +16,7 @@ root.config(bg = black)
 root.resizable(False,False)
 root.title('Interfaz v1.0')
 
-current_path = ""
+current_path = "kiwi.png"
 tipo_img = 1
 
 #Functions
@@ -34,7 +35,9 @@ def button_event():
         current_path = barra_path
         change_image(barra_path, label_img)
     elif opc == 'Gráfica serie-tiempo':
-        print(opc)
+        serie_tiempo_path = hacer_serie_tiempo(textbox.get("0.0", "end"))
+        current_path = serie_tiempo_path
+        change_image(serie_tiempo_path, label_img)
     elif opc == 'Gráfica dispersión léxica':
         print(opc)
         dirty = textbox.get("0.0", "end")
@@ -69,7 +72,6 @@ def change_image(new_image_path, label_img, tipo=1):
     label_img.image = proc_photo
 
 def show_img():
-    print(tipo_img)
     viewer_img(root,current_path,tipo_img)
     root.mainloop()
 

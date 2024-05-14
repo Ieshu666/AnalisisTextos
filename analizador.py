@@ -27,6 +27,7 @@ def guardar_archivo_nuevo(lista_ruta_datos = lista_ruta_datos, archivo_ruta = 't
         archivo.writelines(archivo_ruta + "\n")
         archivo.writelines(fecha + "\n")
         archivo.writelines(autor + "\n")
+
 def generate_temp():
     temp_name = str(round(time.time() * 1000))
     temp_path = sha1(temp_name.encode('utf-8')).hexdigest()
@@ -42,6 +43,28 @@ def get_nombres():
             cont += 1
     return lista_aux
 
+def get_rutas():
+    cont  = 0
+    lista_aux = []
+    with open(lista_ruta_datos, 'r') as archivo:
+        for linea in archivo:
+            if cont % 4 == 1:
+                lista_aux.append(linea.strip())
+            cont += 1
+    return lista_aux
+
+def get_anios():
+    i = 0
+    anios = []
+    with open(lista_ruta_datos, 'r') as archivo:
+        for linea in archivo:
+            if(i % 4 == 2):
+                anios.append(int(linea.strip().split('/')[2]))
+            i += 1
+    anios = list(set(anios))
+    anios.sort()
+    return anios
+
 def buscar_ruta(nombre):
     i = 0
     with open(lista_ruta_datos, 'r') as archivo:
@@ -51,9 +74,48 @@ def buscar_ruta(nombre):
             if(nombre == linea.strip()):
                 i = 1
 
+def serie_tiempo(palabras = []):
+    ruta = ''
+    palabra_en_un_anio = []
+    palabras_en_anios = []
+    veces_palabra = 0
+    txt_aux = ''
+    for palabra in palabras:
+        for a in get_anios():
+            with open(lista_ruta_datos, 'r') as archivo:
+                for linea in archivo:
+                    try:
+                        if(int(linea.strip().split('/')[2]) == a):
+                            txt_aux = leer_texto(ruta)
+                            txt_aux = limpieza_texto(txt_aux,  n_min=4, lista_palabras=stopwords)
+                            veces_palabra += txt_aux.split(' ').count(palabra)
+                        ruta = linea.strip()
+                    except IndexError:
+                        ruta = linea.strip()
+                    except ValueError:
+                        ruta = linea.strip()
+            palabra_en_un_anio.append(veces_palabra)
+            veces_palabra = 0
+        palabras_en_anios.append(palabra_en_un_anio)     
+        palabra_en_un_anio = []   
+    return palabras_en_anios
+
+def hacer_serie_tiempo(dirty):
+    cleanArray = dirty.split("\n")
+    cleanArray.pop(-1)
+    anios = get_anios()
+    for a,b in zip(cleanArray, serie_tiempo(cleanArray)):
+        plt.plot(anios, b , label=a)
+    plt.title('Gráfica de Línea')
+    plt.xlabel('Año')
+    plt.ylabel('Veces dicha')
+    plt.legend()
+    serie_tmp_path = generate_temp()
+    plt.savefig(serie_tmp_path)
+    return serie_tmp_path
+
 def hacer_wordcloud(nombre):
     texto = ''
-    print(buscar_ruta(nombre))
     texto_archivo = leer_texto(buscar_ruta(nombre))
     texto += limpieza_texto(texto_archivo,  n_min=4, lista_palabras=stopwords)
     path_name = generate_temp()
@@ -100,13 +162,3 @@ def dispersion_lexica(nombre, dirty_tokens):
     texto += limpieza_texto(texto_archivo, n_min=4, lista_palabras=stopwords)
     graficar_dispersion(texto, tokens,ubicacion_archivo=temp_path,auto_etiquetas = True, dim_figura=(6,3), graficar=False)
     return temp_path
-
-
-
-
-
-
-
-
-
-
