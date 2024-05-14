@@ -1,28 +1,36 @@
-ieshu
-C:\Users\Usuario\Documents\uni\4tosem\Ing_software\PROYECTOFINAL\entrada\fabula_zorro_y_cuervo.txt
-22/25/2024
-yo qn mas
 Milyunanoches
 C:\Users\Usuario\Documents\uni\4tosem\Ing_software\PROYECTOFINAL\entrada\mil_y_una_noches_pt1.txt
 11/05/2000
-Ieshua
-Zorro2
+Desconocido
+Zorro
 C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/fabula_zorro_y_cuervo.txt
 12/05/2024
-CarvanPalace
+Esopo
 DonQuijote
 C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/cervantes_don_quijote.txt
 14/05/2024
 Miguel de Cervantes
-Prueba
-C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/prueba_in.txt
-12/12/2012
-Yo
-StopWords2
-C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/stopwords_prueba.txt
-02/02/2002
-QuienSabe
-Donquijote3
-C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/cervantes_don_quijote.txt
-13/05/2024
-Miguel de Cervantes
+CabraAsno
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/fabula_cabra_y_asno.pdf
+14/06/2024
+Esopo
+InformeAMLO
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/InformesPresidenciales/AMLO.pdf
+01/09/2023
+Andres Lopez Obrador
+InformeCarlosSalinas
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/InformesPresidenciales/CarlosSalinas.pdf
+09/06/2006
+Carlos Salinas de Gortari
+InformeEPN
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/InformesPresidenciales/EnriquePenaNieto.pdf
+01/09/2018
+Enrique Pe�a Nieto
+InformeZedillo
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/InformesPresidenciales/ErnestoZedillo.pdf
+01/09/2000
+Ernesto Zedillo
+InformeFox
+C:/Users/Usuario/Documents/uni/4tosem/Ing_software/PROYECTOFINAL/entrada/InformesPresidenciales/VicenteFox.pdf
+01/09/2006
+VicenteFox

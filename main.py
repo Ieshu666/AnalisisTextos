@@ -35,16 +35,21 @@ def button_event():
         current_path = barra_path
         change_image(barra_path, label_img)
     elif opc == 'Gráfica serie-tiempo':
-        serie_tiempo_path = hacer_serie_tiempo(textbox.get("0.0", "end"))
-        current_path = serie_tiempo_path
-        change_image(serie_tiempo_path, label_img)
+        if(textbox.get("0.0", "end").strip() != ''):
+            serie_tiempo_path = hacer_serie_tiempo(textbox.get("0.0", "end"))
+            current_path = serie_tiempo_path
+            change_image(serie_tiempo_path, label_img)
+        else:
+            textbox.insert(index = "0.0", text = "Necesitas insertar palabras aquí para usar esta funcion", tags=None)
     elif opc == 'Gráfica dispersión léxica':
-        print(opc)
-        dirty = textbox.get("0.0", "end")
-        dispersion_path = dispersion_lexica(Combo_archives.get(), dirty)
-        current_path = dispersion_path
-        change_image(dispersion_path, label_img,2)
-        tipo_img = 2
+        if(textbox.get("0.0", "end").strip() != ''):
+            dirty = textbox.get("0.0", "end")
+            dispersion_path = dispersion_lexica(Combo_archives.get(), dirty)
+            current_path = dispersion_path
+            change_image(dispersion_path, label_img,2)
+            tipo_img = 2
+        else:
+            textbox.insert(index = "0.0", text = "Necesitas insertar palabras aquí para usar esta funcion", tags=None)
     elif opc == 'Nube de palabras':
         wordcloud_path = hacer_wordcloud(Combo_archives.get())
         current_path = wordcloud_path
